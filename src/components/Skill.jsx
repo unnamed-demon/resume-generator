@@ -1,7 +1,7 @@
-function Skill({ value, id, deleter }) {
+function Skill({ skill, setSkills }) {
   return (
     <div>
-      <li>{value}<button onClick={() => deleter(id)}>delete</button></li>
+      <li>{skill.value}<button onClick={() => setSkills((skills) => skills.filter((item) => item.id !== skill.id))}>delete</button></li>
     </div>
   )
 }

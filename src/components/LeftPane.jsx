@@ -3,52 +3,77 @@ import Course from './Course';
 import Skill from './Skill';
 import Job from './Job';
 
-function LeftPane() {
-  const [jobs, setJobs] = useState([]);
-  const [courses, setCourses] = useState([]);
-  const [skills, setSkills] = useState([]);
+function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, jobs, setJobs, skills, setSkills }) {
   const [skill, setSkill] = useState('');
-  const [newKey, setNewKey] = useState(0);
-
-  const deleteJob = (id) => setJobs(jobs.toSpliced(jobs.indexOf(id), 1));
-  const deleteCourse = (id) => setCourses(courses.toSpliced(courses.indexOf(id), 1));
-  const deleteSkill = (id) => setSkills(skills.filter((item) => item.key !== id));
 
   return (
     <div className='pane'>
       <div className='header'>logo and stuff</div>
       <div className='form'>
         <h1>Personal details</h1>
-        Name :  <input type="text" />
-        Phone :  <input type="text" />
-        Email :  <input type="text" />
+        <label htmlFor="name">Name : </label>
+        <input
+          id='name'
+          type="text"
+          value={person.name}
+          onChange={
+            (e) => setPerson((person) => ({...person, name:e.target.value}))
+          } 
+        />
+        <label htmlFor="phone">Phone : </label>
+        <input
+          id="phone" 
+          type="text" 
+          value={person.phone} 
+          onChange={
+            (e) => setPerson((person) => ({...person, phone:e.target.value}))
+          }
+        />
+        <label htmlFor="email">Email : </label>
+        <input
+          id="email"
+          type="text" 
+          value={person.email} 
+          onChange={
+            (e) => setPerson((person) => ({...person, email:e.target.value}))
+          } 
+        />
         <h1>Education</h1>
         <button onClick={() => {
-          setCourses([...courses, newKey]);
-          setNewKey(newKey + 1);
+          setCourses((courses) => [...courses, { id: newKey, fields: { courseTitle: '', institute: '', duration: '' } } ]);
+          setNewKey((newKey) => newKey + 1);
         }}>Add Course</button>
-        {courses.map((key) => <Course key={key} id={key} deleter={deleteCourse} />)}
+        {
+          courses.map((item) => <Course key={item.id} course={item} setCourses={setCourses} />)
+        }
         <h1>Experience</h1>
         <button onClick={() => {
-          setJobs([...jobs, newKey]);
-          setNewKey(newKey + 1);
+          setJobs((jobs) => [...jobs, { id:newKey, fields: { position:'', company:'', duration:'' } }]);
+          setNewKey((newKey) => newKey + 1);
         }}>Add Job</button>
-        {jobs.map((key) => <Job key={key} id={key} deleter={deleteJob} />)}
+        {
+          jobs.map((item) => <Job key={item.id} job={item} setJobs={setJobs} />)
+        }
         <h1>Skills</h1>
         <input type="text" value={skill} onChange={(e) => setSkill(e.target.value)} />
         <button onClick={() => {
           if (skill === '') return;
-          setSkills([...skills, {
-            key: newKey,
+          setSkills((skills) => [...skills, {
+            id: newKey,
             value: skill
           }]);
           setSkill('');
-          setNewKey(newKey + 1);
+          setNewKey((newKey) => newKey + 1);
         }}>Add Skill</button>
-        <ul>{skills.map(({ key, value }) => <Skill value={value} key={key} id={key} deleter={deleteSkill} />)}</ul>
+        <ul>
+          {
+            skills.map((item) => <Skill key={item.id} skill={item} setSkills={setSkills} />)
+          }
+        </ul>
       </div>
     </div>
   )
 }
 
 export default LeftPane;
+export { }
