@@ -1,0 +1,30 @@
+div {
+  border: 2px solid black;
+  /* box-sizing: border-box; */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.panes {
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.pane {
+  width: 50%;
+}
+
+.header {
+  height: 60px;
+}

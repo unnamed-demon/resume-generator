@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "allowJs": true,
+      "checkJs": false, // Set to true for stricter type checking in JS
+      "jsx": "react", // If you're using React
+      "experimentalDecorators": true, // If you're using decorators
+      "moduleResolution": "Node",
+      "esModuleInterop": true,
+      "noEmit": true,
+      "strict": false,
+      "lib": [
+        "ESNext",
+        "DOM",
+        "WebWorker" // Add other browser or environment APIs as needed
+      ]
+    },
+    "exclude": [
+      "node_modules",
+      "dist",
+      "build"
+    ]
+}
