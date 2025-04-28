@@ -11,7 +11,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
       <div className='header'>logo and stuff</div>
       <div className='form'>
         <h1>Personal details</h1>
-        <label htmlFor="name">Name : </label>
+        <label htmlFor="name">Name </label>
         <input
           id='name'
           type="text"
@@ -20,7 +20,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
             (e) => setPerson((person) => ({...person, name:e.target.value}))
           } 
         />
-        <label htmlFor="phone">Phone : </label>
+        <label htmlFor="phone"> Phone </label>
         <input
           id="phone" 
           type="text" 
@@ -29,7 +29,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
             (e) => setPerson((person) => ({...person, phone:e.target.value}))
           }
         />
-        <label htmlFor="email">Email : </label>
+        <label htmlFor="email"> Email </label>
         <input
           id="email"
           type="text" 
@@ -39,21 +39,21 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
           } 
         />
         <h1>Education</h1>
-        <button onClick={() => {
-          setCourses((courses) => [...courses, { id: newKey, fields: { courseTitle: '', institute: '', duration: '' } } ]);
-          setNewKey((newKey) => newKey + 1);
-        }}>Add Course</button>
         {
           courses.map((item) => <Course key={item.id} course={item} setCourses={setCourses} />)
         }
-        <h1>Experience</h1>
         <button onClick={() => {
-          setJobs((jobs) => [...jobs, { id:newKey, fields: { position:'', company:'', duration:'' } }]);
+          setCourses((courses) => [...courses, { id: newKey, fields: { courseTitle: '', institute: '', duration: '' } } ]);
           setNewKey((newKey) => newKey + 1);
-        }}>Add Job</button>
+        }} className='centered-button'>+</button>
+        <h1>Experience</h1>
         {
           jobs.map((item) => <Job key={item.id} job={item} setJobs={setJobs} />)
         }
+        <button onClick={() => {
+          setJobs((jobs) => [...jobs, { id:newKey, fields: { position:'', company:'', duration:'' } }]);
+          setNewKey((newKey) => newKey + 1);
+        }} className='centered-button'>+</button>
         <h1>Skills</h1>
         <input type="text" value={skill} onChange={(e) => setSkill(e.target.value)} />
         <button onClick={() => {
@@ -64,7 +64,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
           }]);
           setSkill('');
           setNewKey((newKey) => newKey + 1);
-        }}>Add Skill</button>
+        }}>+</button>
         <ul>
           {
             skills.map((item) => <Skill key={item.id} skill={item} setSkills={setSkills} />)

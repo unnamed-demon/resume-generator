@@ -7,7 +7,7 @@ function Course({ course, setCourses }) {
 
   return (
     <div>
-      <label htmlFor={"courseTitle"+id}>Course Title : </label>
+      <label htmlFor={"courseTitle"+id}>Course Title </label>
       <input 
         id={'courseTitle'+id}
         type="text" 
@@ -18,7 +18,7 @@ function Course({ course, setCourses }) {
           setCourses((courses) => courses.toSpliced(courses.indexOf(course), 1, { id, fields: newFields }));
         }}
       />
-      <label htmlFor={"institute"+id}>Institute : </label>
+      <label htmlFor={"institute"+id}> Institute </label>
       <input
         id={"institute"+id}
         type="text" 
@@ -29,7 +29,7 @@ function Course({ course, setCourses }) {
           setCourses((courses) => courses.toSpliced(courses.indexOf(course), 1, { id, fields: newFields }));
         }}
       />
-      <label htmlFor={"duration"+id}>Duration : </label>
+      <label htmlFor={"duration"+id}> Duration </label>
       <input
         id={"duration"+id}
         type="text" 
@@ -40,7 +40,7 @@ function Course({ course, setCourses }) {
           setCourses((courses) => courses.toSpliced(courses.indexOf(course), 1, { id, fields: newFields }));
         }}
       />
-      <button onClick={() => setCourses((courses) => courses.filter((item) => item.id !== id))}>delete</button>
+      <button onClick={() => setCourses((courses) => courses.filter((item) => item.id !== id))}>-</button>
     </div>
   )
 }
