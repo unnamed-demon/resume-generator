@@ -1,19 +1,24 @@
 import { useState } from 'react';
 
 function RightPane({ person, courses, jobs, skills }) {
-  const [scale, setScale] = useState(1);
+  const [scaled, setScaled] = useState(false);
 
   const toggle = () => {
-    if(scale === 1)
-      setScale(0.65);
-    else
-      setScale(1);
+    const $preview = document.querySelector('.preview');
+    if(!scaled) {
+      $preview.classList.add('scaled');
+      $preview.style.setProperty("--ratio",(window.innerHeight - 50)/$preview.scrollHeight);
+    } 
+    else {
+      $preview.classList.remove('scaled');
+    }
+    setScaled(!scaled);
   }
 
   return (
     <div className='pane background'>
       <button onClick={() => toggle()}>🔎</button>
-      <div className="preview" style={{scale}}>
+      <div className="preview">
         <h1>{person.name}</h1>
         <h3>{person.phone}</h3>
         <h3>{person.email}</h3>

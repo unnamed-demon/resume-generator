@@ -54,13 +54,23 @@ button {
     background-color: rgb(37, 37, 37);
     padding: 25px;
     overflow: auto;
+    position: relative;
 }
 
 .preview {
     background-color: white;
     padding: 25px;
     height: auto;
-    width: auto;
+    width: 100%;
     aspect-ratio: 21 / 29.7;
     box-shadow: 5px 5px 10px black;
+}
+
+.scaled {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    --ratio: 1;
+    scale: var(--ratio);
 }
