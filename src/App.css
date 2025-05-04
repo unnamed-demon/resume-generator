@@ -11,12 +11,29 @@
 
 .header {
     height: 11.5%;
+    background-color: rgb(5, 3, 22);
+    box-shadow: 0 5px 10px black;
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 10px;
+    font-size: 36px;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
 }
 
 .form {
     padding: 0 25px;
     overflow: auto;
     height: 88.5%;
+    background-color: rgb(15, 23, 39);
+    color: rgb(228, 228, 228);
+}
+
+.spread {
+    display: flex;
+    justify-content: space-between;
 }
 
 input {
@@ -37,12 +54,20 @@ button {
 }
 
 .background button {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     position: fixed;
     right: 5%;
     top: 8%;
     z-index: 1;
+    background: white;
+    display: grid;
+    place-items: center;
+
+    svg {
+        height: 70%;
+        width: 70%;
+    }
 }
 
 .centered-button {
@@ -73,4 +98,10 @@ button {
     translate: -50% -50%;
     --ratio: 1;
     scale: var(--ratio);
+}
+
+ul {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: auto;
 }

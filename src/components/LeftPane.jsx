@@ -8,7 +8,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
 
   return (
     <div className='pane'>
-      <div className='header'>logo and stuff</div>
+      <div className='header'>Unnamed Demon's Résumé Generator</div>
       <div className='form'>
         <h1>Personal details</h1>
         <label htmlFor="name">Name </label>
