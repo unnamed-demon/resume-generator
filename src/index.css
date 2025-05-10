@@ -1,17 +1,15 @@
-div {
+* {
   /* border: 2px solid black; */
   box-sizing: border-box;
 }
 
 html, body, #root {
+  margin: 0;
+  padding: 0;
   height: 100%;
-}
-
-#root {
-  box-sizing: border-box;
+  width: 100%;
 }
 
 body {
-  margin: 0;
+  font-family: sans-serif;
 }
-

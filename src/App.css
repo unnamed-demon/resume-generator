@@ -2,7 +2,6 @@
     display: flex;
     height: 100%;
     box-sizing: border-box;
-    font-family:sans-serif
 }
 
 .pane {
@@ -57,8 +56,6 @@ button {
     height: 35px;
     width: 35px;
     position: fixed;
-    right: 5%;
-    top: 8%;
     z-index: 1;
     background: white;
     display: grid;
@@ -67,6 +64,21 @@ button {
     svg {
         height: 70%;
         width: 70%;
+    }
+}
+
+.zoom-button {
+    right: 5%;
+    top: 8%;
+}
+
+.print-button {
+    right: 5%;
+    bottom: 8%;
+
+    svg {
+        height: 80% !important;
+        width: 80% !important;
     }
 }
 
@@ -104,4 +116,14 @@ ul {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-auto-rows: auto;
+}
+
+@media print{
+  .panes {
+    display: none;
+  }
+
+  .preview {
+    box-shadow: none;
+  }
 }

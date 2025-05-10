@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ZoomButton from "./ZoomButton";
+import PrintButton from "./PrintButton";
 
 function RightPane({ person, courses, jobs, skills }) {
   const [scaled, setScaled] = useState(false);
@@ -39,9 +40,9 @@ function RightPane({ person, courses, jobs, skills }) {
       <ZoomButton toggle={toggle} scaled={scaled} />
 
       <div className="preview">
-        <h1>{person.name}</h1>
-        <h3>{person.phone}</h3>
-        <h3>{person.email}</h3>
+        <h1>{person.name || "Name"}</h1>
+        <h3>{person.phone || "Phone Number"}</h3>
+        <h3>{person.email || "Email"}</h3>
 
         <h2>Education</h2>
         {courses.map(({ id, fields }) => (
@@ -68,6 +69,8 @@ function RightPane({ person, courses, jobs, skills }) {
           ))}
         </ul>
       </div>
+
+      <PrintButton />
     </div>
   );
 }

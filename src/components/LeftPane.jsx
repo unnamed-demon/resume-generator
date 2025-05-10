@@ -38,6 +38,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
             (e) => setPerson((person) => ({...person, email:e.target.value}))
           } 
         />
+
         <h1>Education</h1>
         {
           courses.map((item) => <Course key={item.id} course={item} setCourses={setCourses} />)
@@ -46,6 +47,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
           setCourses((courses) => [...courses, { id: newKey, fields: { courseTitle: '', institute: '', duration: '' } } ]);
           setNewKey((newKey) => newKey + 1);
         }} className='centered-button'>+</button>
+
         <h1>Experience</h1>
         {
           jobs.map((item) => <Job key={item.id} job={item} setJobs={setJobs} />)
@@ -54,6 +56,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
           setJobs((jobs) => [...jobs, { id:newKey, fields: { position:'', company:'', duration:'' } }]);
           setNewKey((newKey) => newKey + 1);
         }} className='centered-button'>+</button>
+        
         <h1>Skills</h1>
         <input type="text" value={skill} onChange={(e) => setSkill(e.target.value)} />
         <button onClick={() => {
