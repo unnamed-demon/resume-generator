@@ -6,43 +6,64 @@ function Course({ course, setCourses }) {
   const [fields, setFields] = useState(oldFields);
 
   return (
-    <div>
-      <label htmlFor={"courseTitle"+id}>Course Title </label>
-      <input 
-        id={'courseTitle'+id}
-        type="text" 
+    <div className="entry-grid">
+      <button
+        onClick={() =>
+          setCourses((courses) => courses.filter((item) => item.id !== id))
+        }
+      >
+        -
+      </button>
+      <label htmlFor={"courseTitle" + id}>Course Title </label>
+      <input
+        id={"courseTitle" + id}
+        type="text"
         value={courseTitle}
         onChange={(e) => {
-          const newFields = {...fields, courseTitle: e.target.value};
+          const newFields = { ...fields, courseTitle: e.target.value };
           setFields(newFields);
-          setCourses((courses) => courses.toSpliced(courses.indexOf(course), 1, { id, fields: newFields }));
+          setCourses((courses) =>
+            courses.toSpliced(courses.indexOf(course), 1, {
+              id,
+              fields: newFields,
+            })
+          );
         }}
       />
-      <label htmlFor={"institute"+id}> Institute </label>
+      <label htmlFor={"institute" + id}> Institute </label>
       <input
-        id={"institute"+id}
-        type="text" 
-        value={institute} 
+        id={"institute" + id}
+        type="text"
+        value={institute}
         onChange={(e) => {
-          const newFields = {...fields, institute: e.target.value};
+          const newFields = { ...fields, institute: e.target.value };
           setFields(newFields);
-          setCourses((courses) => courses.toSpliced(courses.indexOf(course), 1, { id, fields: newFields }));
+          setCourses((courses) =>
+            courses.toSpliced(courses.indexOf(course), 1, {
+              id,
+              fields: newFields,
+            })
+          );
         }}
       />
-      <label htmlFor={"duration"+id}> Duration </label>
+      <label htmlFor={"duration" + id}> Duration </label>
       <input
-        id={"duration"+id}
-        type="text" 
-        value={duration} 
+        id={"duration" + id}
+        type="text"
+        value={duration}
         onChange={(e) => {
-          const newFields = {...fields, duration: e.target.value};
+          const newFields = { ...fields, duration: e.target.value };
           setFields(newFields);
-          setCourses((courses) => courses.toSpliced(courses.indexOf(course), 1, { id, fields: newFields }));
+          setCourses((courses) =>
+            courses.toSpliced(courses.indexOf(course), 1, {
+              id,
+              fields: newFields,
+            })
+          );
         }}
       />
-      <button onClick={() => setCourses((courses) => courses.filter((item) => item.id !== id))}>-</button>
     </div>
-  )
+  );
 }
 
 export default Course;

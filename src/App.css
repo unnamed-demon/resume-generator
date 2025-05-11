@@ -1,7 +1,6 @@
 .panes {
     display: flex;
     height: 100%;
-    box-sizing: border-box;
 }
 
 .pane {
@@ -13,21 +12,32 @@
     background-color: rgb(5, 3, 22);
     box-shadow: 0 5px 10px black;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     color: white;
-    padding: 10px;
-    font-size: 36px;
+    padding: 0.75rem;
+    font-size: 2.25rem;
     display: flex;  
     justify-content: center;
     align-items: center;
 }
 
 .form {
-    padding: 0 25px;
+    padding: 0.25rem 1.5rem;
     overflow: auto;
     height: 88.5%;
     background-color: rgb(15, 23, 39);
     color: rgb(228, 228, 228);
+}
+
+.stretch {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.stretch input {
+    width: 85%;
+    flex-shrink: 1;
 }
 
 .spread {
@@ -35,36 +45,53 @@
     justify-content: space-between;
 }
 
+.entry-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 5% 20% 75%;
+    row-gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.entry-grid button{
+    grid-row: 1 / -1;
+    place-self: center;
+}
+
+label {
+    display: grid;
+    align-items: center;
+}
+
 input {
     border-radius: 10px;
-    width: 140px;
+}
+
+.skill-field  {
+    width: 47.8%;
 }
 
 button {
     border-radius: 50%;
     border: 1px solid black;
     line-height: 0;
-    margin: 5px;
+    margin: 0.25rem;
 }
 
 .form button {
-    height: 20px;
-    width: 20px;
+    height: 1.25rem;
+    width: 1.25rem;
 }
 
 .background button {
-    height: 35px;
-    width: 35px;
+    height: 2.25rem;
+    width: 2.25rem;
     position: fixed;
     z-index: 1;
     background: white;
     display: grid;
     place-items: center;
-
-    svg {
-        height: 70%;
-        width: 70%;
-    }
+    box-shadow: 2px 2px 5px black;
 }
 
 .zoom-button {
@@ -72,14 +99,19 @@ button {
     top: 8%;
 }
 
+.zoom-button svg {
+    height: 70%;
+    width: 70%;
+}
+
 .print-button {
     right: 5%;
     bottom: 8%;
+}
 
-    svg {
-        height: 80% !important;
-        width: 80% !important;
-    }
+.print-button svg {
+    height: 80%;
+    width: 80%;
 }
 
 .centered-button {
@@ -89,14 +121,14 @@ button {
 
 .background {
     background-color: rgb(37, 37, 37);
-    padding: 25px;
+    padding: 1.5rem;
     overflow: auto;
     position: relative;
 }
 
 .preview {
     background-color: white;
-    padding: 25px;
+    padding: 1.5rem 2.25rem 3rem;
     height: auto;
     width: 100%;
     aspect-ratio: 21 / 29.7;
@@ -116,14 +148,4 @@ ul {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-auto-rows: auto;
-}
-
-@media print{
-  .panes {
-    display: none;
-  }
-
-  .preview {
-    box-shadow: none;
-  }
 }
