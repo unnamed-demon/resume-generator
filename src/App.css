@@ -53,7 +53,7 @@
     margin-bottom: 1rem;
 }
 
-.entry-grid button{
+.entry-grid button {
     grid-row: 1 / -1;
     place-self: center;
 }
@@ -65,17 +65,36 @@ label {
 
 input {
     border-radius: 10px;
+    padding-inline: 0.5rem;
+}
+
+.form input {
+    padding-inline: 0.5rem;
 }
 
 .skill-field  {
-    width: 47.8%;
+    width: 47.45%;
 }
 
 button {
+    all: unset;
+    background-color: white;
+    color: black;
+    line-height: 0;
     border-radius: 50%;
     border: 1px solid black;
-    line-height: 0;
     margin: 0.25rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.background button:hover {
+    border: none;
+}
+
+button:active {
+    background-color: gainsboro;
 }
 
 .form button {
@@ -88,10 +107,7 @@ button {
     width: 2.25rem;
     position: fixed;
     z-index: 1;
-    background: white;
-    display: grid;
-    place-items: center;
-    box-shadow: 2px 2px 5px black;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.75);
 }
 
 .zoom-button {
@@ -100,8 +116,8 @@ button {
 }
 
 .zoom-button svg {
-    height: 70%;
-    width: 70%;
+    height: 55%;
+    width: 55%;
 }
 
 .print-button {
@@ -110,12 +126,11 @@ button {
 }
 
 .print-button svg {
-    height: 80%;
-    width: 80%;
+    height: 65%;
+    width: 65%;
 }
 
 .centered-button {
-    display: block;
     margin-inline: auto;
 }
 
@@ -144,8 +159,36 @@ button {
     scale: var(--ratio);
 }
 
+.single-line {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.single-line button {
+    margin-block: auto;
+}
+
 ul {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-auto-rows: auto;
+}
+
+.form ul {
+    width: 95%;
+    margin-inline: auto;
+    row-gap: 0.25rem;
+    column-gap: 2rem;
+    padding-inline: 0.5rem;
+}
+
+.form li {
+    display: flex;
+    gap: 0.25rem;
+    overflow: hidden;
+}
+
+.form li button {
+    margin-block: 0;
+    flex-shrink: 0;
 }

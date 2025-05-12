@@ -6,11 +6,25 @@ import Job from './Job';
 function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, jobs, setJobs, skills, setSkills }) {
   const [skill, setSkill] = useState('');
 
+  const addSkill = () => {
+    if (skill === "") return;
+    setSkills((skills) => [
+      ...skills,
+      {
+        id: newKey,
+        value: skill,
+      },
+    ]);
+    setSkill("");
+    setNewKey((newKey) => newKey + 1);
+  };
+
   return (
     <div className="pane">
       <div className="header">Unnamed Demon's Résumé Generator</div>
       <div className="form">
         <h1>Personal details</h1>
+        
         <div className="stretch">
           <label htmlFor="name">Name </label>
           <input
@@ -22,6 +36,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
             }
           />
         </div>
+
         <div className="stretch">
           <label htmlFor="phone"> Phone </label>
           <input
@@ -33,6 +48,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
             }
           />
         </div>
+
         <div className="stretch">
           <label htmlFor="email"> Email </label>
           <input
@@ -44,6 +60,7 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
             }
           />
         </div>
+
         <h1>Education</h1>
         {courses.map((item) => (
           <Course key={item.id} course={item} setCourses={setCourses} />
@@ -85,28 +102,21 @@ function LeftPane({ newKey, setNewKey, person, setPerson, courses, setCourses, j
         </button>
 
         <h1>Skills</h1>
-        <input
-          className='skill-field'
-          type="text"
-          value={skill}
-          onChange={(e) => setSkill(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            if (skill === "") return;
-            setSkills((skills) => [
-              ...skills,
-              {
-                id: newKey,
-                value: skill,
-              },
-            ]);
-            setSkill("");
-            setNewKey((newKey) => newKey + 1);
-          }}
-        >
-          +
-        </button>
+        <div className='single-line'>
+          <input
+            className="skill-field"
+            type="text"
+            value={skill}
+            onChange={(e) => setSkill(e.target.value)}
+            onKeyDown={(e) => {
+              if(e.key !== 'Enter') return;
+              addSkill();
+            }}
+          />
+          <button onClick={addSkill}>
+            +
+          </button>
+        </div>
         <ul>
           {skills.map((item) => (
             <Skill key={item.id} skill={item} setSkills={setSkills} />
